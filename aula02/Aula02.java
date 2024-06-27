@@ -34,6 +34,7 @@ public class Aula02 {
 
         System.out.format("byte: %d\nshort: %d\nint: %d\nlong: %d\nfloat: %.3f\ndouble: %.3f\nchar: %c\nString: %s\nboolean: %b\n",
                 pequeno, quasePequeno, quaseGrande, grandao, numeroComVirgula, numeroComVirgula2, letra, nome, logic);
+        
     }
 }
 
