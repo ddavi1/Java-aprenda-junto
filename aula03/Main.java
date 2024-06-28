@@ -26,7 +26,7 @@ public class Main {
         // <= (verifica se o valor é menor ou igual)
 
         // OPERADORES LÓGICOS
-        // && (necessita que os dois sejam atendidos ou true)
+        // && = e (necessita que os dois sejam atendidos ou true)
 
         // T e T = T
         // T e F = F
@@ -34,15 +34,15 @@ public class Main {
         // F e F = F
 
 
-        // || (necessita que apenas 1 seja atendido ou true)
+        // || = ou (necessita que apenas 1 seja atendido ou true)
 
-        // T e T = T
-        // T e F = T
-        // F e T = T
-        // F e F = F
+        // T ou T = T
+        // T ou F = T
+        // F ou T = T
+        // F ou F = F
 
-        // ! (ele inverte o resultado)
-        // !T = V
+        // ! = not nao (ele inverte o resultado)
+        // !T = F
         // !F = V
 
 
