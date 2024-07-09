@@ -1,5 +1,7 @@
 package aula07;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -8,16 +10,15 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Pessoa pessoa = null;
 
-        imprimirDados();
+        int opcao = mostraMenuEDevolveOpcaoSelecionada(scanner);
 
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-
+        List<Pessoa> pessoasList = new ArrayList<>();
+        
         while (opcao !=0) {
 
             if (opcao == 1) {
+                imprimirSeparador();
 
                 System.out.println("Digite seu primeiro nome: ");
                 String nome = scanner.nextLine();
@@ -33,24 +34,48 @@ public class Main {
                 System.out.println("Digite seu telefone: ");
                 String telefone = scanner.nextLine();
 
-                pessoa = new Pessoa(nome, sobreNome, idade, telefone);
-            } else if (opcao == 2) {
-                pessoa.imprimirDados();
+                imprimirSeparador();
 
+                Pessoa pessoa = new Pessoa(nome, sobreNome, idade, telefone);
+                pessoasList.add(pessoa); //
+
+            } else if (opcao == 2) {
+
+                    if(pessoasList.isEmpty()) {
+                        System.out.println("Não existe nenhuma pessoa no sistema");
+                    } else {
+                        for (Pessoa pessoa: pessoasList) {
+                            imprimirSeparador();
+                            pessoa.imprimirDados();
+                        }
+
+                    }
+
+            } else if (opcao == 3) {
+                pessoasList.clear(); // limpa a lista
+                System.out.println("Pessoa apagada com sucesso!");
             }
 
-            imprimirDados();
-
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-
+            opcao = mostraMenuEDevolveOpcaoSelecionada(scanner);
 
         }
-        System.out.println("programa finalizado\n");
+
     }
 
-    private static void imprimirDados() {
-        System.out.println("Escolha uma opção");
+    private static int mostraMenuEDevolveOpcaoSelecionada(Scanner scanner) {
+        imprimirMenu();
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
+
+    private static void imprimirSeparador() {
+        System.out.println("==================================================================================================");
+
+    }
+
+    private static void imprimirMenu() {
+        System.out.println("Escolha uma opção:");
         System.out.println("1 - Cadastro de pessoas");
         System.out.println("2 - Visualizar pessoa cadastrada");
         System.out.println("3 - Apagar");
