@@ -15,27 +15,37 @@ public class Agenda {
     }
 
 
+
+
     public void executa() {
 
-        int opcao = mostraMenuEDevolveOpcaoSelecionada();
+        OpcaoMenu opcao = mostraMenuEDevolveOpcaoSelecionada();
 
 
-        while (opcao !=0) {
-
-            if (opcao == 1) {
-                imprimirSeparador();
-
-                Pessoa pessoa = cadastroDePessoas();
-                pessoasCadastradas.add(pessoa);
+        while (opcao != OpcaoMenu.SAIR) { // 0
 
 
-            } else if (opcao == 2) {
+            switch (opcao) {
+                case OpcaoMenu.CADASTRO: // case 1
+                    imprimirMenu();
+                    Pessoa pessoa = cadastroDePessoas();
+                    pessoasCadastradas.add(pessoa);
+                    break;
 
-                exibePessoas();
 
-            } else if (opcao == 9) {
+                case OpcaoMenu.VISUALIZACAO: // 2
+                    exibePessoas();
+                    imprimirMenu();
+                    break;
 
-                apagaPessoa();
+
+                case OpcaoMenu.APAGAR: // 9
+                    apagaPessoa();
+                    imprimirMenu();
+                    break;
+
+                default:
+                    System.out.println("Opção invalida");
             }
 
             opcao = mostraMenuEDevolveOpcaoSelecionada();
@@ -58,11 +68,11 @@ public class Agenda {
         System.out.println("0 - Sair");
     }
 
-    private int mostraMenuEDevolveOpcaoSelecionada() {
+    private OpcaoMenu mostraMenuEDevolveOpcaoSelecionada() {
         imprimirMenu();
         int opcao = scanner.nextInt();
         scanner.nextLine();
-        return opcao;
+        return OpcaoMenu.getFromCodigo(opcao);
     }
 
     private Pessoa cadastroDePessoas() {
